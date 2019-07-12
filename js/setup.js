@@ -5,7 +5,7 @@ var NAME_MASS = ['Иван', 'Хуан Себастьян', 'Мария', 'Кр�
 var SURNAME_MASS = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвин'];
 var COATS_MASS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYESCOLOR_MASS = ['black', 'red', 'blue', 'yellow', 'green'];
-// var FIREBALL_MASS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+var FIREBALL_MASS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
 /**
  * Функция по произвольной выборке числа
@@ -134,4 +134,33 @@ setupClose.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     closePopup();
   }
+});
+
+/** 4.1-3 - добавление переключения цветов мантии и глаз
+ * по нажатию.
+ */
+/**
+ * Ищем блок в ДОМ-е по классу '.setup-wizard'.
+ */
+// var setupWizard = document.querySelector('.setup-wizard');
+
+/** Делаем выборку эллемента с классом '.wizard-coat' в '.setup-wizard'
+ * Происходят действия
+*/
+var setupWizardCoat = document.querySelector('.setup-wizard .wizard-coat');
+setupWizardCoat.addEventListener('click', function () {
+  var colorCoats = getRandomElementFromArray(COATS_MASS);
+  setupWizardCoat.style.fill = colorCoats;
+});
+
+var setupWizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
+setupWizardEyes.addEventListener('click', function () {
+  var colorEyes = getRandomElementFromArray(EYESCOLOR_MASS);
+  setupWizardEyes.style.fill = colorEyes;
+});
+
+var setupWizardFireball = document.querySelector('.setup-fireball-wrap');
+setupWizardFireball.addEventListener('click', function () {
+  var colorFireball = getRandomElementFromArray(FIREBALL_MASS);
+  setupWizardFireball.style.background = colorFireball;
 });
